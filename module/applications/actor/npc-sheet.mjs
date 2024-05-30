@@ -65,6 +65,8 @@ export default class ActorSheet5eNPC extends ActorSheet5e {
       ctx.isDepleted = item.isOnCooldown && (uses.per && (uses.value > 0));
       ctx.hasTarget = !!target && !(["none", ""].includes(target.type));
       ctx.canToggle = false;
+      // Item grouping
+      ctx.group = item.system.activation.type || "passive";
       // Individual item preparation
       this._prepareItem(item, ctx);
       if ( item.type === "class" ) ctx.availableLevels = Array.fromRange(CONFIG.DND5E.maxLevel, 1).map(level => ({
